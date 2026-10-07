@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Phishing Blocker",
+  "version": "1.0",
+
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "webNavigation",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "warning.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
